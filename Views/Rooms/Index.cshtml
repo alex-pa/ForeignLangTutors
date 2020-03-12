@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.Rooms>
+
+@{
+    ViewData["Title"] = "Залы";
+}
+
+<div class="flex-row">
+    <h1>Залы</h1>
+    <p class="align-self-end">
+        <a class="btn btn-primary" asp-action="Create">Добавить зал</a>
+    </p>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Зал
+            </th>
+            <th>
+                Номер
+            </th>
+            <th>
+                Вместительность
+            </th>
+            <th>
+                Описание
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

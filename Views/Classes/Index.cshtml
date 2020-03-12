@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.Classes>
+
+@{
+    ViewData["Title"] = "Занятия";
+}
+
+<div class="flex-row">
+    <h1>Занятия</h1>
+    <p class="align-self-end">
+        <a class="btn btn-primary" asp-action="Create">Добавить занятие</a>
+    </p>
+</div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Тема занятия
+            </th>
+            <th>
+                Начало занятия
+            </th>
+            <th>
+                Конец занятия
+            </th>
+            <th>
+                Группа
+            </th>
+            <th>
+                Номер зала
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Topic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BeginningTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.СompletionTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Group.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.Number)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

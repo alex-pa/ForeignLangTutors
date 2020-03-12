@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ForeignLangTutorsMVC.Statistics.GroupsOccupancy>
+
+@{
+    ViewData["Title"] = "Статистика - Заполненость групп";
+}
+
+<h1>Заполненость групп</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Группа
+            </th>
+            <th>
+                Язык
+            </th>
+            <th>
+                Уровень
+            </th>
+            <th>
+                Макс кол-во студентов
+            </th>
+            <th>
+                Репетитор
+            </th>
+            <th>
+                Кол-во студентов
+            </th>
+            <th>
+                Кол-во свободных мест
+            </th>
+            <th>
+                Процент заполнения
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.NumberOfStudents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Group.TutorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupTotalStudents)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupVacancies)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OccupationRate) %
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

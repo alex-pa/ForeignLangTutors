@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ForeignLangTutorsMVC.Statistics.StudentStats>
+
+@{
+    ViewData["Title"] = "Статистика учеников";
+}
+
+<h1>Статистика учеников</h1>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Ученик
+            </th>
+            <th>
+                Язык
+            </th>
+            <th>
+                Оценка
+            </th>
+            <th>
+                Уровень
+            </th>
+            <th>
+                Кол-во занятий
+            </th>
+            <th>
+                Кол-во групп
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfClasses)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfGroups)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+

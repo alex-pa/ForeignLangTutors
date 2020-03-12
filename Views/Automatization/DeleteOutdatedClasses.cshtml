@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.Classes>
+
+@{
+    ViewData["Title"] = "Удалить уже прошедшие занятия";
+}
+
+<h1>Удалить уже прошедшие занятия</h1>
+
+<div>
+    <hr />
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Тема занятия
+                </th>
+                <th>
+                    Начало занятия
+                </th>
+                <th>
+                    Конец занятия
+                </th>
+                <th>
+                    Группа
+                </th>
+                <th>
+                    Номер зала
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Topic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BeginningTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.СompletionTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back</a>
+    </form>
+</div>
+

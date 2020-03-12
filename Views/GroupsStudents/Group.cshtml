@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.GroupsStudents>
+
+@{
+    ViewData["Title"] = "Ученики группы";
+}
+
+    <h1>Ученики группы</h1>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Ученик
+                </th>
+                <th>
+                    Логин
+                </th>
+                <th>
+                    Оценка
+                </th>
+                <th>
+                    Уровень
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Grade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.Level)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

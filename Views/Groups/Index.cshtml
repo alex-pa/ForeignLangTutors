@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.Groups>
+
+@{
+    ViewData["Title"] = "Группы";
+}
+
+    <div class="flex-row">
+        <h1>Группы</h1>
+        <p class="align-self-end">
+            <a class="btn btn-primary" asp-action="Create">Добавить группу</a>
+        </p>
+        <a class="btn btn-info" asp-controller="GroupsStudents" asp-action="Index">Все группы</a>
+    </div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Группа
+            </th>
+            <th>
+                Язык
+            </th>
+            <th>
+                Уровень
+            </th>
+            <th>
+                Макс кол-во студентов
+            </th>
+            <th>
+                Репетитор
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Level)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfStudents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tutor.FullName)
+                </td>
+                <td>
+                    <a asp-controller="GroupsStudents" asp-action="Group" asp-route-id="@item.Id">Список учеников</a>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

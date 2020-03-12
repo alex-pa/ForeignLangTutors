@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ForeignLangTutorsMVC.Reports.StudentsSchedule>
+
+@{
+    ViewData["Title"] = "Отчет - график студентов";
+}
+
+<h1>График студентов</h1>
+
+@foreach (var item in Model)
+{
+    <h1>@Html.DisplayFor(modelItem => item.Student.FullName)</h1>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Тема занятия
+                </th>
+                <th>
+                    Начало занятия
+                </th>
+                <th>
+                    Конец занятия
+                </th>
+                <th>
+                    Группа
+                </th>
+                <th>
+                    Номер зала
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Class in item.Classes)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Class.Topic)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Class.BeginningTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Class.СompletionTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Class.GroupId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => Class.RoomId)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ForeignLangTutors.Models.Students>
+
+@{
+    ViewData["Title"] = "Ученики";
+}
+
+    <div class="flex-row">
+        <h1>Ученики</h1>
+        <p class="align-self-end">
+            <a class="btn btn-primary" asp-action="Create">Добавить ученика</a>
+        </p>
+    </div>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Ученик
+            </th>
+            <th>
+                Адрес
+            </th>
+            <th>
+                Логин
+            </th>
+            <th>
+                Номер карты
+            </th>
+            <th>
+                Язык
+            </th>
+            <th>
+                Оценка
+            </th>
+            <th>
+                Уровень
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
